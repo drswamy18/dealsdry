@@ -240,10 +240,8 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                   CarouselSlider.builder(
-                      itemCount: _dealsdryController.fetchingproducts.length,
+                      itemCount: 10,
                       itemBuilder: (context, index, realIndex) {
-                        final products = _dealsdryController
-                            .fetchingproducts[index].products;
                         return Padding(
                           padding: const EdgeInsets.only(left: 40, top: 25),
                           child: Container(

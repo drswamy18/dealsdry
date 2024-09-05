@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:dealsdry/controller.dart';
 import 'package:dealsdry/loginscreen.dart';
 import 'package:flutter/material.dart';
@@ -9,9 +8,9 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:pinput/pinput.dart';
 
 class OtpPage extends StatefulWidget {
-  // final String mobile;
+   final String? mobile;
   const OtpPage({
-    super.key,
+    super.key,  this.mobile,
   });
 
   @override
@@ -132,7 +131,7 @@ class _OtpPageState extends State<OtpPage> {
                     left: 89.0,
                   ),
                   child: Text(
-                    "to your mobile number +91 9008010415",
+                    "to your mobile number +91 ${widget.mobile}",
                     style: TextStyle(
                         color: Colors.black45,
                         fontSize: 15,

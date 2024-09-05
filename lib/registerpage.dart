@@ -86,7 +86,7 @@ class _RegisterpageState extends State<Registerpage> {
                   controller: _emailcontroller,
                   keyboardType: TextInputType.emailAddress,
                   decoration: InputDecoration(
-                    prefix:Padding(
+                    prefixIcon:Padding(
                       padding: const EdgeInsets.only(right: 8.0),
                       child: Icon(Icons.email_outlined,color: Colors.red,size: 17,),
                     ) ,
@@ -103,11 +103,11 @@ class _RegisterpageState extends State<Registerpage> {
                   obscureText: _obscuretext,
                   decoration: InputDecoration(
                       hintText: "Create Password",
-                      prefix: Padding(
+                      prefixIcon: Padding(
                         padding: const EdgeInsets.only(right: 8.0),
                         child: Icon(Icons.security,color: Colors.red,size: 17,),
                       ),
-                      suffix:IconButton(onPressed: () {
+                      suffixIcon:IconButton(onPressed: () {
                         setState(() {
                           _obscuretext=!_obscuretext;
                         });
@@ -124,7 +124,7 @@ class _RegisterpageState extends State<Registerpage> {
                   controller: _codecontroller,
                   keyboardType: TextInputType.number,
                   decoration: InputDecoration(
-                    prefix: Padding(
+                    prefixIcon: Padding(
                       padding: const EdgeInsets.only(right: 8.0),
                       child: Icon(Icons.room_preferences_outlined,color: Colors.red,size: 17,),
                     ),

@@ -18,7 +18,8 @@ class DealsdryController extends GetxController {
       var data = await _dioClient.userlogin(phonenumber: phoneNumber);
       update();
       SharedPreferences pref = await SharedPreferences.getInstance();
-      pref.setString("userId", data.toString());
+      // pref.setString("userId", data.toString());
+      pref.setString("deviceId", data.toString());
       // pref.setString("deviceId", user.deviceId.toString());
       // print(user.userId.toString());
       // _user = data;

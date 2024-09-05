@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:pinput/pinput.dart';
 import 'package:toggle_switch/toggle_switch.dart';
 import 'package:dealsdry/controller.dart';
 import 'package:dealsdry/splashscreen.dart';
@@ -108,7 +107,10 @@ class _LoginScreenState extends State<LoginScreen> {
                         controller: _phoneController,
                         keyboardType: TextInputType.number,
                         decoration: InputDecoration(
-                          prefixText: "+91  ",
+                          prefix: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text("+91"),
+                          ),
                           hintText: "Phone",
                           contentPadding: EdgeInsets.only(left: 10),
                           hintStyle: TextStyle(color: Colors.black54),
@@ -164,8 +166,6 @@ class _LoginScreenState extends State<LoginScreen> {
                             backgroundColor: Colors.red,
                             snackStyle: SnackStyle.FLOATING,
                           ));
-
-
                         }else{
                           var data = _dealsdryController.userlogin(
                               phoneNumber: phonenumber);
@@ -174,7 +174,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             _phoneController.clear();
 
                           });
-                          Get.to(OtpPage());
+                          Get.to(OtpPage(mobile: phonenumber,));
                         }
                       } else {}
                     }

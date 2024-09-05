@@ -48,10 +48,9 @@ class DioClient {
       print('data=$data');
       var response = await _dio.post(url, data: data);
       print("response = $response");
-      if (response.data["status"] == 1) {
-        // print("success");
+      if (response.data["status"]==1) {
         Get.to(OtpPage());
-        var data = await response.data["data"]["userId"];
+        var data = await response.data["data"]["deviceId"];
         print(data);
         // UserDetailes user = UserDetailes();
         //  user = UserDetailes.fromJson(data);
@@ -83,7 +82,7 @@ class DioClient {
       print('data = $data');
       final response = await _dio.post(url, data: data);
       print("response = $response");
-      if (response.statusCode == 200) {
+      if (response.data["status"] == 1) {
         Get.to(() => HomePage());
       } else {
         Get.to(() => Registerpage());
@@ -141,7 +140,7 @@ class DioClient {
       }
       if (password.isEmpty || !isValidPassword(password)) {
         Get.showSnackbar(GetSnackBar(
-          duration: Duration(seconds: 10),
+          duration: Duration(seconds: 2),
           messageText: Center(
             child: Text(
               "Password must be at least 8 characters long! and "
@@ -200,7 +199,6 @@ class DioClient {
       ));
       return false;
     }
-
     int atIndex = email.indexOf('@');
     if (!email.substring(atIndex).contains('.')) {
       Get.showSnackbar(GetSnackBar(
@@ -218,7 +216,6 @@ class DioClient {
       ));
       return false;
     }
-
     return true;
   }
 
@@ -233,43 +230,33 @@ class DioClient {
     return passwordRegex.hasMatch(password);
   }
 
-
   Future<List<Homepagemodel>> fetchProducts() async {
     try {
       final url = "${Api.baseurl}home/withoutPrice";
       _dio.options.headers["Content-Type"] = "application/json";
       var response = await _dio.get(url);
-
       print(url);
       print("response=$response");
-
       if (response.data["status"] == 1) {
         var data = response.data["data"];
-
-        // Ensure 'products' is a list and not null
         var productsData = data["products"];
         if (productsData is List) {
-          // Convert each item in the list to Homepagemodel
           List<Homepagemodel> products = productsData.map((item) {
             return Homepagemodel.fromJson(item as Map<String, dynamic>);
           }).toList();
-
           return products;
         } else {
           print("Products data is not a list or is null");
-          return []; // Return an empty list if 'products' is not a list
+          return [];
         }
       } else {
         print("Response status is not successful");
-        return []; // Return an empty list if status is not 1
+        return [];
       }
     } on DioException catch (e) {
       errorMessage(e);
       print("Error occurred: ${e.message}");
-      return []; // Return an empty list on error
+      return [];
     }
   }
-
-
-
 }
