@@ -137,9 +137,6 @@ class _RegisterpageState extends State<Registerpage> {
                 padding: const EdgeInsets.only(left: 280, top: 140),
                 child: GestureDetector(
                   onTap: () {
-                    String?email=_emailcontroller.text;
-                    String? password= _passwordcontroller.text;
-
                     _dealsdryController.RegisterUser(
                         email: _emailcontroller.text,
                         password: _passwordcontroller.text,

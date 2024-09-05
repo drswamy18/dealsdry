@@ -20,6 +20,14 @@ class _HomePageState extends State<HomePage> {
     "images/homepage2.jpg",
     "images/homepage3.jpg"
   ];
+  List Phones = [
+    "images/phone1.jpg",
+    "images/phone2.jpg",
+    "images/phone3.jpg",
+    "images/phone4.jpg",
+    "images/phone5.jpg",
+    "images/phone6.jpg"
+  ];
 
   @override
   void initState() {
@@ -81,26 +89,28 @@ class _HomePageState extends State<HomePage> {
             thickness: 1,
             height: 4,
           ),
-        CarouselSlider.builder(
-            itemCount:Images.length,
-            itemBuilder: (context, index, realIndex) {
-             return Padding(
-                padding: const EdgeInsets.all(5),
-                child: Container(
-                  height: 250,
-                  width: 380,
-                  child: ClipRRect(
-                      borderRadius:
-                      BorderRadius.circular(15),
-                      child: Image.asset(Images[index],)),
-                ),
-              );
-            },
-            options: CarouselOptions(
-              height: 200,
-              viewportFraction: 1,
-            )
-        ),
+          CarouselSlider.builder(
+              itemCount: Images.length,
+              itemBuilder: (context, index, realIndex) {
+                return Padding(
+                  padding: const EdgeInsets.all(5),
+                  child: Container(
+                    height: 250,
+                    width: 380,
+                    child: ClipRRect(
+                        borderRadius: BorderRadius.circular(15),
+                        child: Image.asset(
+                          Images[index],
+                        )),
+                  ),
+                );
+              },
+              options: CarouselOptions(
+                height: 200,
+                autoPlay: true,
+                autoPlayInterval: Duration(seconds: 4),
+                viewportFraction: 1,
+              )),
           SizedBox(
             height: 20,
           ),
@@ -240,19 +250,26 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                   CarouselSlider.builder(
-                      itemCount: 10,
+                      itemCount: Phones.length,
                       itemBuilder: (context, index, realIndex) {
                         return Padding(
                           padding: const EdgeInsets.only(left: 40, top: 25),
                           child: Container(
                             // height: 220,
+                            child: Image.asset(
+                              Phones[index],
+                              height: 220,
+                            ),
                             width: 120,
                             decoration: BoxDecoration(color: Colors.white),
                           ),
                         );
                       },
                       options:
-                          CarouselOptions(height: 220, viewportFraction: 0.5))
+                          CarouselOptions(height: 220,
+                              autoPlay: true,
+                              autoPlayInterval: Duration(seconds: 4),
+                              viewportFraction: 0.5))
                 ],
               ),
             ),

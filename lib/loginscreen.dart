@@ -150,7 +150,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             backgroundColor: Colors.red,
                             snackStyle: SnackStyle.FLOATING,
                           ));
-                        } else if(phonenumber.length!<10){
+                        } else if(phonenumber.length<10){
                           Get.showSnackbar(GetSnackBar(
                             duration: Duration(seconds: 2),
                             messageText: Text(

@@ -68,10 +68,10 @@ class Product {
 
   factory Product.fromJson(Map<String, dynamic> json) {
     return Product(
-      icon: json['icon'] ?? '', // Provide default value if null
-      offer: json['offer'] ?? '', // Provide default value if null
-      label: json['label'] ?? '', // Provide default value if null
-      subLabel: json['SubLabel'] ?? json['Sublabel'], // Handle both possible key names
+      icon: json['icon'] ?? '',
+      offer: json['offer'] ?? '',
+      label: json['label'] ?? '',
+      subLabel: json['SubLabel'] ?? json['Sublabel'],
     );
   }
 }

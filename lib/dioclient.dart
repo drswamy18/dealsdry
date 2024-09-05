@@ -41,8 +41,6 @@ class DioClient {
       _dio.options.headers["Content-Type"] = "application/json";
       Map<String, dynamic> data = {
         "mobileNumber": phonenumber
-        //9011470243
-        //   9879
       };
       print("loginurl = $url");
       print('data=$data');
@@ -50,10 +48,8 @@ class DioClient {
       print("response = $response");
       if (response.data["status"]==1) {
         Get.to(OtpPage());
-        var data = await response.data["data"]["deviceId"];
-        print(data);
-        // UserDetailes user = UserDetailes();
-        //  user = UserDetailes.fromJson(data);
+        var data = await response.data["data"]["userId"];
+        print("userId=$data");
         return data;
       } else {
         print("error");
@@ -82,7 +78,7 @@ class DioClient {
       print('data = $data');
       final response = await _dio.post(url, data: data);
       print("response = $response");
-      if (response.data["status"] == 1) {
+      if (response.statusCode == 200) {
         Get.to(() => HomePage());
       } else {
         Get.to(() => Registerpage());
